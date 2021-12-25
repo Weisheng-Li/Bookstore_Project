@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} Comment {% endblock %}
+{% block content %} 
+	<!-- values: ISBN, loginName, score, commentDate, msg, avgUsefulnessScore-->
+	<!-- userInfo: firstName, lastName, isManager-->
+	<p>user: {{values[1]}}</p>
+	<p>Name: {{userInfo[0] + " " + userInfo[1]}}</p>
+	<p>isManager: {{"Yes" if userInfo[2] else "No"}}</p>
+	<p>Trust Count: {{trustcount[True] if trustcount[True] else 0}}</p>
+	<p>Non-trust Count: {{trustcount[False] if trustcount[False] else 0}}</p>
+	<p>score: {{values[2]}}</p>
+	<p>comment date: {{values[3]}}</p>
+	<p>{{values[4]}}</p>
+	<p>Average Usefulness Score: {{values[5]}}</p>
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+
+	<form action="#" method="post">
+		<p>Trust this user?
+			<input type="radio" name="isTrust" value="True"/> Trust
+			<input type="radio" name="isTrust" value="False"/> Don't trust
+		</p>
+		<p>Is this comment useful?</p>
+		<p>
+			<input type="radio" name="usefulRating" value="very useful"/> very useful
+			<input type="radio" name="usefulRating" value="useful"/> useful
+			<input type="radio" name="usefulRating" value="useless"/> useless
+		</p>
+		<p><input type="submit" value="Submit"/></p>
+	</form>
+
+	<p>Other Comments: </p>
+	{% for cmt in otherComment %}
+		<!-- cmt: ISBN, title, score, msg -->
+		<p><a href="{{url_for('bookPage') + '?ISBN=' + cmt[0]}}">
+		Book Title: {{cmt[1]}}
+		</a></p>
+		<p>Score: {{cmt[2]}}</p>
+		<p>Message: {{cmt[3]}}</p>
+	{% endfor%}
+	
+{% endblock %} 

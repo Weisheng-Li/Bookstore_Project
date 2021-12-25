@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Book Search{% endblock %}
+
+{% block content %}
+	
+<!-- Display all flashed messages -->
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for msg in messages %}
+			<p class="text-warning">{{msg}}</p>
+		{% endfor %}
+	{% endif %}
+{% endwith%}
+
+<div class="d-grid gap-5">
+<div class="p-3 bg-light border">
+<p class="fs-4">Filter:</p>
+<form action="#" method="post">
+	<p>
+	Author: <input type="text" name="aut"/> 
+	Publisher: <input type="text" name="pub"/>
+	Title: <input type="text" name="tit" />
+	Language (3-letter language codes): <input type="text" name="lang" />
+	</p>
+
+	<p>Ordered by:
+		<input type="radio" name="order" value="pub_date"/> Publish Date
+		<input type="radio" name="order" value="rating"/> Average Rating
+		<input type="radio" name="order" value="trusted_rating"/> Average Rating from trusted Users
+	</p>
+
+	<p>Only show books with discount:
+		<input type="radio" name="disc_only" value="True"/> 
+	</p>
+
+	<button type="submit" class="btn btn-primary">Apply Filter</button>
+</form>
+</div>
+
+<div class="p-3 bg-light border">
+<p class="fs-4">Search Result:</p>
+{% for attributes in values %}
+	<!-- Should add average rating later -->
+	<p><a href="{{url_for('bookPage') + '?ISBN=' + attributes[0]}}">
+	Title: {{attributes[1]}}, Author: {{attributes[2]}}, Published Date: {{attributes[3]}}
+	</a></p>
+{% endfor%}
+</div>
+</div>
+
+{% endblock %}

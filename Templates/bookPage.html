@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %} bookPage {% endblock %}
+{% block content %} 
+	<!--
+	{% for attr in values %}
+		<p>{{attr}}, </p>
+	{% endfor%}
+	-->
+
+<div class="d-grid gap-4">
+<div class="p-2 bg-light position-relative">
+	<p class="fs-4">{{values[2]}}</p>
+	<p class="fst-italic">by {{authors}}</p>
+	<p>Published by {{values[3]}} on {{values[5]}}</p>
+	<p>Genre: {{genres}}</p>
+	<p>Keywords: {{keywords}}</p>
+	<p>ISBN: {{values[1]}}</p>
+	<p>Language: {{values[4]}}</p>
+	<p>Number of Pages: {{values[6]}}</p>
+	<p>Price: {{values[11]}} (lowest: {{values[12]}})</p>
+	<p>In Stock: {{"Yes" if values[7] > 0 else "No"}}</p>
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+
+	<form class="position-absolute top-50 end-0" action="#" method="post">
+		<p>Quantity:</p>
+		<p><input type="text" name="quant" /></p>
+
+		<p><input type="submit" value="Add into my shopping Cart"/></p>
+	</form>
+</div>
+
+<!-- values: 0:AuthorID, 1:ISBN, 2:title, 3:publisher,
+		 4:language, 5:pub_date, 6:number of pages
+		 7:stockLevel, 8:discount, 9:price
+		 10:Author, 11:current price, 12: lowest price-->
+
+<div class="p-2 bg-light">
+	<p class="fs-5">Other users also buy:</p>
+	<!-- book: ISBN, title-->
+	{% for book in suggestions %}
+		<p><a href="{{url_for('bookPage') + '?ISBN=' + book[0]}}">
+		Title: {{book[1]}}
+		</a></p>
+	{% endfor%}
+</div>
+
+<div class="p-2 bg-light">
+	<p class="fs-5">Your Comment:</p>
+	<form action="#" method="post">
+		<p>What rating would you give this book? (1-10)
+		<input type="text" name="score" value="{{mycomment[0] if mycomment[0]}}"/></p>
+
+		<!--
+		<p>Please leave your comment here:</p>
+		<p><input type="text" name="mycmt" value="{{mycomment[1] if mycomment[1]}}"/></p>
+		-->
+
+		<div class="mb-3">
+    	<label class="form-label">Please leave your comment here:</label>
+    	<input type="text" name="mycmt" value="{{mycomment[1] if mycomment[1]}}" class="form-control">
+  		</div>
+
+		<p><input type="submit" value="Submit"/></p>
+	</form>
+</div>
+
+<div class="p-2 bg-light">
+	<p class="fs-5">Other User Comment: </p>
+
+	<form action="#" method="post">
+		<p>Top <input type="text" name="n"/> most useful Comment  <input type="submit" value="OK"/></p>
+	</form>
+
+	{% for cmt in comment %}
+		<div class="card">
+		  <div class="card-header">
+		    <a href="{{url_for('comment') + '?ISBN=' + cmt[0] + '&logName=' + cmt[1]}}">
+			{{cmt[1]}} ---- {{cmt[2]}}
+			</a>
+		  </div>
+		  <div class="card-body">
+		    <p class="card-text">{{cmt[4]}}</p>
+		  </div>
+		</div>
+	{% endfor%}
+</div>
+
+</div>
+{% endblock %}
+

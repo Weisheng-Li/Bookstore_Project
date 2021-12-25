@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %} bookPage {% endblock %}
+{% block content %} 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">User Stat</h5>
+        <p class="card-text">View the list of most trusted users and users who made the most useful comments</p>
+        <a href="{{url_for('userStat')}}" class="card-link">View user stat</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Book Stat</h5>
+        <p class="card-text">View the list of most popular books, authors, and publishers in this quarter</p>
+        <a href="{{url_for('bookStat')}}" class="card-link">View book stat</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add Discount</h5>
+        <p class="card-text">Change the discount percentage on books. To remove the discount, simply set the percentage to 1</p>
+        <a href="{{url_for('addDiscount')}}" class="card-link">Change discount percentage</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Arrival of more copies</h5>
+        <p class="card-text">Change the stock level of books when more copies arrived</p>
+        <a href="{{url_for('changeStock')}}" class="card-link">Change stock level</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add new books</h5>
+        <p class="card-text">Add a new book and its information into the system</p>
+        <a href="{{url_for('addBook')}}" class="card-link">Add new books</a>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Create manager account</h5>
+        <p class="card-text">Create a manager account for the new manager in the bookstore</p>
+        <a href="{{url_for('managerSignUp')}}" class="card-link">Create account</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

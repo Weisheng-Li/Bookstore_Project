@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} User Stat{% endblock %}
+{% block content %} 
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+
+	<form action="#" method="post">
+		<p>m = <input type="text" name="m" /></p>
+
+		<p><input type="submit" value="Generate the stat"/></p>
+	</form>
+
+	<p>Most Trusted Users: </p>
+	{% for user in mostTrusted %}
+		<p>User: {{user[0]}}, Trust Score: {{user[1]}}</p>
+	{% endfor%}
+
+	<p>Most Useful Users: </p>
+	{% for user in mostUseful %}
+		<p>User: {{user[0]}}, Avg Usefulness Score: {{user[1]}}</p>
+	{% endfor%}
+{% endblock%}

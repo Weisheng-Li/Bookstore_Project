@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %} Degrees of seperation {% endblock %}
+{% block content %} 
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+
+	<form action="#" method="post">
+		<p>Author: <input type="text" name="author" /></p>
+
+		<p><input type="submit" value="Search"/></p>
+	</form>
+
+	<!-- book: ISBN, title -->
+	<p> Books written by 1-degree separated authors: </p>
+	{% for book in oneDS %}
+		<p><a href="{{url_for('bookPage') + '?ISBN=' + book[0]}}">
+		{{book[1]}}
+		</a></p>
+	{% endfor%}
+
+	<p> Books written by 2-degree separated authors: </p>
+	{% for book in twoDS %}
+		<p><a href="{{url_for('bookPage') + '?ISBN=' + book[0]}}">
+		{{book[1]}}
+		</a></p>
+	{% endfor%}
+{% endblock%}

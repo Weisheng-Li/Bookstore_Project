@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<div class="d-grid gap-3">
+	<div class="p-2 bg-light border">
+	{% for attributes in values %}
+		<!-- Should add average rating later -->
+		<p><a href="{{url_for('bookPage') + '?ISBN=' + attributes[4]}}">
+		{{attributes[1]}},</a> quantity: {{attributes[2]}}, price: {{attributes[3]}}
+		</p>
+	{% endfor%}
+
+	<p>Total: {{total}}</p>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+	</div>
+
+	<form action="#" method="post">
+		<button type="submit" class="btn btn-primary">Place Order</button>
+	</form>
+</div>
+{% endblock %}

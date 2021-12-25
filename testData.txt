@@ -1,0 +1,6 @@
+# users
+creator 123456 Weisheng Li
+
+# managers
+Origin, Geralt, of Rivia, 123456, True, Kaer Morhen, 9081201384
+manager2, Yanling, Wang, 123456, true, State College, 9802201844

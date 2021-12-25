@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Add Discount {% endblock %}
+{% block content %} 
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+
+	<form action="#" method="post">
+		<p>ISBN(13 digits): <input type="text" name="ISBN" /></p>
+		<p>Discount Percentage (0 - 1): <input type="text" name="disc" /></p>
+
+		<p><input type="submit" value="Commit"/></p>
+	</form>
+{% endblock%}

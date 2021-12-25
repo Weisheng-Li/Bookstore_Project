@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Book Management {% endblock %}
+{% block content %} 
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p class="text-warning">{{msg}}</p>
+			{% endfor %}
+		{% endif %}
+	{% endwith%}
+
+	<form action="#" method="post">
+		<p>ISBN(13 digits): <input type="text" name="ISBN" /></p>
+		<p>Title: <input type="text" name="title" /></p>
+		<p>Authors(separated by comma): <input type="text" name="author" /> </p>
+		<p>publisher: <input type="text" name="pub" /></p>
+		<p>language: <input type="text" name="lang" /></p>
+		<p>publicationDate: <input type="text" name="pubDate" /></p>	
+		<p>numberOfPages: <input type="text" name="nop" /></p>
+		<p>stockLevel: <input type="text" name="stock" /></p>
+		<p>discountPercentage: <input type="text" name="disc" /></p>
+		<p>price: <input type="text" name="price" /></p>
+		<p>Keywords(optional, separated by comma): <input type="text" name="kword" /> </p>
+		<p>Genre(separated by comma): <input type="text" name="genre" /> </p>
+
+		<p><input type="submit" value="Add"/></p>
+	</form>
+{% endblock%}
