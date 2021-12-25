@@ -1,14 +1,23 @@
-How to deploy? (Windows)
+# bookstore website
+This is an database-backed web application for an online bookstore. It supports the following functionalities:
+* User registration and login
+* Browse and order books
+* Leave comments for books. Comments can receive usefulness rating
+* Discount information and buying suggestion
+* Special functions only available to managers:  
+  stock level management, bookstore statistics, apply discount
+
+## How to deploy? (Windows)
 
 1. Open the command prompt
 2. enter the directory (Bookstore_Project)
-3. Activate the virtual environment:
->>> venv\Scripts\activate
-4. Set the entrance of the application
->>> set FLASK_APP=FlaskCore.py
-5. Run the application
->>> flask run
-6. You should see a prompt "Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)"
+3. Activate the virtual environment:  
+` venv\Scripts\activate `
+4. Set the entrance of the application  
+` set FLASK_APP=FlaskCore.py `
+5. Run the application  
+` flask run `
+6. You should see a prompt "Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)"  
 Now copy and paste the url into the browser and you should be able to use it just like
 any other websites.
 
@@ -25,7 +34,7 @@ Data Population:
 Run the dataPopulation.py to parse the data in book.csv
 into the database and create first manager. 
 
-How to use different functionalities?
+## How to use different functionalities?
 
 1. Customer Registration
 On the navigation bar, click the Sign-up button. 
