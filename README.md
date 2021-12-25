@@ -5,7 +5,9 @@ This is an database-backed web application for an online bookstore. It supports 
 * Leave comments for books. Comments can receive usefulness rating
 * Discount information and buying suggestion
 * Special functions only available to managers:  
-  stock level management, bookstore statistics, apply discount
+  stock level management, bookstore statistics, apply discount  
+  
+![Search Page of the Bookstore Website](/screen_shot.JPG)
 
 ## How to deploy? (Windows)
 
